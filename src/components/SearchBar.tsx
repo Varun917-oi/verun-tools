@@ -1,0 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
+import { Search } from "lucide-react";
+export default function SearchBar({ initial = "", large = false }: { initial?: string; large?: boolean }) { const [query, setQuery] = useState(initial); const router = useRouter(); const submit = (event: FormEvent) => { event.preventDefault(); router.push(`/tools?search=${encodeURIComponent(query.trim())}`); }; return <form onSubmit={submit} className={`flex items-center rounded-2xl border border-white/10 bg-white/[.04] px-4 shadow-xl shadow-black/20 focus-within:border-white/30 ${large ? "py-4" : "py-3"}`}><Search className="mr-3 text-white/40" size={20}/><label className="sr-only" htmlFor="tool-search">Search tools</label><input id="tool-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search for a tool…" className="w-full bg-transparent outline-none placeholder:text-white/30"/><button className="rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-black">Search</button></form>; }

@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import type { Tool } from "@/data/registry";
+export default function ToolCard({ tool }: { tool: Tool }) { const Icon = tool.icon; return <Link href={`/tools/${tool.slug}`} className="group relative rounded-2xl border border-white/10 bg-white/[.025] p-5 transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/[.05]"><Icon className="mb-5 text-white/70" size={22}/>{tool.popular && <span className="absolute right-4 top-4 text-[10px] uppercase tracking-wider text-white/35">Popular</span>}<h3 className="font-medium">{tool.name}</h3><p className="mt-2 min-h-12 text-sm leading-6 text-white/45">{tool.description}</p><span className="mt-5 flex items-center justify-between text-sm text-white/45">Open tool <ArrowUpRight size={16} className="group-hover:text-white"/></span></Link>; }
